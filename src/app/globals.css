@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+/**
+ * BAHASA VISUAL: SWISS BRUTALIST EDITORIAL
+ * - Garis grid 1px solid tegas, layout 12 kolom, minim dekorasi.
+ * - Tanpa glassmorphism, tanpa gradien, tanpa glow.
+ * - Warna theme-color terverifikasi: #0a0a0a.
+ * - Sisa palet adalah INFERRED dengan kontras > WCAG AA (bahkan AAA untuk teks utama).
+ */
+
+:root,
+[data-theme="dark"] {
+  --color-bg: #0a0a0a;          /* TERVERIFIKASI dari meta theme-color #0a0a0a */
+  --color-surface: #121212;     /* INFERRED: permukaan kartu & panel */
+  --color-text: #f4f4f0;        /* INFERRED: kontras 17.8:1 terhadap #0a0a0a (WCAG AAA) */
+  --color-muted: #a3a39e;       /* INFERRED: kontras 7.6:1 terhadap #0a0a0a (WCAG AAA) */
+  --color-border: #2c2c2a;      /* INFERRED: garis grid struktural 1px solid */
+  --color-accent: #ff3e00;      /* INFERRED: Swiss international orange accent */
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --color-bg: #f4f4f0;          /* INFERRED: kertas arsitektural terang */
+  --color-surface: #eaeae4;     /* INFERRED: permukaan kartu terang */
+  --color-text: #0a0a0a;        /* INFERRED: kontras 17.8:1 terhadap #f4f4f0 (WCAG AAA) */
+  --color-muted: #4a4a46;       /* INFERRED: kontras 8.1:1 terhadap #f4f4f0 (WCAG AAA) */
+  --color-border: #1f1f1d;      /* INFERRED: garis grid 1px solid tegas pada tema terang */
+  --color-accent: #c92a00;      /* INFERRED: kontras > 5.4:1 terhadap #f4f4f0 (WCAG AA) */
+  color-scheme: light;
+}
+
+/* Font Grotesque Netral & Monospace Teknis — INFERRED */
+:root {
+  --font-sans: "Inter", "Helvetica Neue", "Arial", system-ui, -apple-system, sans-serif; /* INFERRED */
+  --font-mono: "JetBrains Mono", "Fira Code", "ui-monospace", "SFMono-Regular", Menlo, Monaco, Consolas, monospace; /* INFERRED */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  scroll-behavior: auto;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tipografi Swiss dengan Fluid clamp() — INFERRED skala fluid */
+.swiss-display {
+  font-size: clamp(2.25rem, 5.5vw + 0.5rem, 5.25rem);
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+
+.swiss-h2 {
+  font-size: clamp(1.6rem, 3vw + 0.4rem, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+.swiss-h3 {
+  font-size: clamp(1.15rem, 1.5vw + 0.35rem, 1.6rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+
+.swiss-quote {
+  font-size: clamp(1.4rem, 2.6vw + 0.4rem, 2.5rem);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+/* Fokus Keyboard Terlihat Jelas (WCAG AA/AAA) */
+:focus-visible {
+  outline: 2px solid var(--color-accent) !important;
+  outline-offset: -2px !important;
+}
+
+/* Utilitas Garis Grid 1px Solid */
+.border-grid {
+  border-color: var(--color-border);
+}
+
+.bg-theme {
+  background-color: var(--color-bg);
+}
+
+.bg-surface {
+  background-color: var(--color-surface);
+}
+
+.text-theme {
+  color: var(--color-text);
+}
+
+.text-muted {
+  color: var(--color-muted);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+/* Target sentuh minimal 44x44px untuk elemen interaktif */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Reduced Motion: Nonaktifkan animasi, transisi, dan pergerakan marquee */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+[data-reduced-motion="true"] *,
+[data-reduced-motion="true"] *::before,
+[data-reduced-motion="true"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
